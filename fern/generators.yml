@@ -22,7 +22,7 @@ groups:
         version: 0.9.6
         output:
           location: local-file-system
-          path: ../src/generated
+          path: ../../src/generated
   pets:
     audiences:
       - pets
@@ -31,4 +31,4 @@ groups:
         version: 0.9.6
         output:
           location: local-file-system
-          path: ../src/generated
+          path: ../../src/generated
