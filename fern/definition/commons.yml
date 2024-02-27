@@ -1,0 +1,4 @@
+errors:
+  DoesNotExistError:
+    status-code: 404
+    type: string

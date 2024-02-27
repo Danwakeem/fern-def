@@ -1,0 +1,72 @@
+imports:
+  commons: commons.yml
+
+service:
+  auth: false
+  url: Pets
+  base-path: ""
+  endpoints:
+    create:
+      docs: Add a pet to the database
+      method: POST
+      path: ""
+      request: CreatePetRequest
+      response: Pet
+      examples:
+        - request: $CreatePetRequest.Fido
+          response:
+            body: $Pet.Fido
+
+    get:
+      docs: Retrieve a pet from the database based on the ID
+      method: GET
+      path: /{id}
+      path-parameters:
+        id: PetId
+      response: Pet
+      errors:
+        - commons.DoesNotExistError
+      examples:
+        # Success response
+        - path-parameters:
+            id: tt0111161
+          response:
+            body: $Pet.Fido
+
+types:
+  PetId:
+    type: string
+    docs: The unique identifier for a Pet in the database
+    examples:
+      - name: Sample
+        value: tt0111161
+
+  PetClassification:
+    enum:
+      - DOG
+      - CAT
+      - FISH
+
+  Pet:
+    properties:
+      id: PetId
+      name: string
+      classification:
+        type: PetClassification
+        docs: The classification of pet
+    examples:
+      - name: Fido
+        value:
+          id: tt0111161
+          name: Fido
+          classification: DOG
+
+  CreatePetRequest:
+    properties:
+      name: string
+      classification: PetClassification
+    examples:
+      - name: Fido
+        value:
+          name: Fido
+          classification: DOG

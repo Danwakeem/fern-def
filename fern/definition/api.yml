@@ -1,0 +1,9 @@
+name: movies-and-pets-api
+environments:
+  Production:
+    urls:
+      IMDB: https://fern-api.demos.danwakeem.com/imdb
+      Pets: https://fern-api.demos.danwakeem.com/pets
+default-environment: Production
+error-discrimination:
+  strategy: status-code

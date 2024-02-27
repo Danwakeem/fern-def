@@ -1,0 +1,68 @@
+imports:
+  commons: commons.yml
+
+service:
+  auth: false
+  url: IMDB
+  base-path: /movies
+  endpoints:
+    create:
+      docs: Add a movie to the database
+      method: POST
+      path: /create-movie
+      request: CreateMovieRequest
+      response: Movie
+      examples:
+        # Success response
+        - request: $CreateMovieRequest.Shaw
+          response:
+            body: $Movie.Shaw
+
+    get:
+      docs: Retrieve a movie from the database based on the ID
+      method: GET
+      path: /{id}
+      path-parameters:
+        id: MovieId
+      response: Movie
+      errors:
+        - commons.DoesNotExistError
+      examples:
+        # Success response
+        - path-parameters:
+            id: $MovieId.Sample
+          response:
+            body: $Movie.Shaw
+
+types:
+  MovieId:
+    type: string
+    docs: The unique identifier for a Movie in the database
+    examples:
+      - name: Sample
+        value: tt0111161
+
+  Movie:
+    properties:
+      id: MovieId
+      title: string
+      rating:
+        type: double
+        docs: The rating scale out of ten stars
+    examples:
+      - name: Shaw
+        value:
+          id: tt0111161
+          title: The Shawshank Redemption
+          rating: 9.3
+
+  CreateMovieRequest:
+    properties:
+      title: string
+      rating: double
+    examples:
+      - name: Shaw
+        value:
+          title: The Shawshank Redemption
+          rating: 9.3
+
