@@ -4,7 +4,7 @@ imports:
 service:
   auth: false
   url: Pets
-  base-path: ""
+  base-path: /pets
   endpoints:
     create:
       docs: Add a pet to the database
@@ -37,6 +37,14 @@ service:
           response:
             body: $Pet.Fido
 
+    list:
+      docs: Retrieve all pets from the database
+      audiences:
+        - pets
+      method: GET
+      path: ""
+      response: PetPagination
+
 types:
   PetId:
     type: string
@@ -50,6 +58,11 @@ types:
       - DOG
       - CAT
       - FISH
+
+  PetPagination:
+    properties:
+      meta: commons.PaginationMeta
+      content: list<Pet>
 
   Pet:
     properties:

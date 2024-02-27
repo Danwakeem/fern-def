@@ -38,6 +38,18 @@ service:
           response:
             body: $Movie.Shaw
 
+    list:
+      docs: Retrieve all movies from the database
+      audiences:
+        - imdb
+      method: GET
+      path: ""
+      request:
+        name: MovieListRequest
+        query-parameters:
+          nextToken: optional<string>
+      response: MoviePagination
+
 types:
   MovieId:
     type: string
@@ -45,6 +57,11 @@ types:
     examples:
       - name: Sample
         value: tt0111161
+
+  MoviePagination:
+    properties:
+      meta: commons.PaginationMeta
+      content: list<Movie>
 
   Movie:
     properties:

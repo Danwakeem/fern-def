@@ -6,7 +6,7 @@ environments:
   Production:
     urls:
       IMDB: https://fern-api.demos.danwakeem.com/imdb
-      Pets: https://fern-api.demos.danwakeem.com/pets
+      Pets: https://fern-api.demos.danwakeem.com
 default-environment: Production
 error-discrimination:
   strategy: status-code

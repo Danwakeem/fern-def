@@ -1,3 +1,11 @@
+types:
+  PaginationMeta:
+    properties:
+      nextToken: optional<string>
+    examples:
+      - name: Sample
+        value:
+          nextToken: "eyJ0eXA"
 errors:
   DoesNotExistError:
     status-code: 404
