@@ -8,6 +8,8 @@ service:
   endpoints:
     create:
       docs: Add a pet to the database
+      audiences:
+        - pets
       method: POST
       path: ""
       request: CreatePetRequest
@@ -19,6 +21,8 @@ service:
 
     get:
       docs: Retrieve a pet from the database based on the ID
+      audiences:
+        - pets
       method: GET
       path: /{id}
       path-parameters:

@@ -1,4 +1,7 @@
 name: movies-and-pets-api
+audiences:
+  - imdb
+  - pets
 environments:
   Production:
     urls:

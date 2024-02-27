@@ -1,6 +1,6 @@
-default-group: local
+default-group: everything
 groups:
-  local:
+  everything:
     generators:
       - name: fernapi/fern-typescript-express
         version: 0.9.6
@@ -14,3 +14,21 @@ groups:
           path: ../example/sdk/node
         config: 
           namespaceExport: TheOneSDK
+  imdb:
+    audiences:
+      - imdb
+    generators:
+      - name: fernapi/fern-typescript-express
+        version: 0.9.6
+        output:
+          location: local-file-system
+          path: ../src/generated
+  pets:
+    audiences:
+      - pets
+    generators:
+      - name: fernapi/fern-typescript-express
+        version: 0.9.6
+        output:
+          location: local-file-system
+          path: ../src/generated
